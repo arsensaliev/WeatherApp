@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Android-basic</string>
-    <string name="city">Тараз</string>
-    <string name="temperature">+12</string>
+    <string name="city_name">Тараз</string>
+    <string name="city_temperature">+12</string>
 </resources>

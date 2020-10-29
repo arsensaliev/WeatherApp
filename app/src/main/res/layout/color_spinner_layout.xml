@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/city_name_padding"
+    android:text="@string/city_name"
+    android:textColor="@color/colorLight"
+    android:textSize="@dimen/city_name_textSize">
+
+</CheckedTextView>
