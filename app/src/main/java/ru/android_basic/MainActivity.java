@@ -1,5 +1,6 @@
 package ru.android_basic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Spinner spinnerLocation;
     private TextView cityTemperature;
+    private ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerLocation = findViewById(R.id.spinnerLocation);
         cityTemperature = findViewById(R.id.city_temperature);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.locations, R.layout.color_spinner_layout);
+        adapter = ArrayAdapter.createFromResource(this, R.array.locations, R.layout.color_spinner_layout);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         spinnerLocation.setAdapter(adapter);
         spinnerLocation.setOnItemSelectedListener(this);
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onRestoreInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d("MainActivity", "onRestoreInstanceState");
+        spinnerLocation.setSelection(adapter.getPosition(saveInstanceState.getString("selectedCity")));
     }
 
     @Override
@@ -90,10 +93,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState) {
+    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState) {
         super.onSaveInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d("MainActivity", "onSaveInstanceState");
+        saveInstanceState.putString("selectedCity", spinnerLocation.getSelectedItem().toString());
     }
 
     @Override
