@@ -1,5 +1,8 @@
 package ru.android_basic;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,16 +21,17 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
 
     private static final String TAG = "RecyclerAdapter";
+    private static final String SELECTED_CITY = "selectedCity";
+
     int count = 0;
     List<String> citiesList;
     List<String> citiesListAll;
-    CityActivity cityActivity;
+    CityActivity cityActivityContext;
 
-
-    public RecyclerAdapter(List<String> citiesList) {
+    public RecyclerAdapter(List<String> citiesList, Context context) {
         this.citiesList = citiesList;
         this.citiesListAll = new ArrayList<>(citiesList);
-        this.cityActivity = new CityActivity();
+        this.cityActivityContext = (CityActivity) context;
     }
 
     @NonNull
@@ -97,7 +101,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            cityActivity.finishActivityWithResult(citiesList.get(getAdapterPosition()));
+            Intent intentResult = new Intent();
+            intentResult.putExtra(SELECTED_CITY, citiesList.get(getAdapterPosition()));
+            cityActivityContext.setResult(Activity.RESULT_OK, intentResult);
+            cityActivityContext.finish();
         }
     }
 

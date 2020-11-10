@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CityActivity extends AppCompatActivity {
-    private static final String SELECTED_CITY = "selectedCity";
+
     private static String city;
 
     private Toolbar toolbar;
@@ -35,7 +35,7 @@ public class CityActivity extends AppCompatActivity {
         addCitiesInArrayList(citiesList);
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(citiesList);
+        recyclerAdapter = new RecyclerAdapter(citiesList, CityActivity.this);
         recyclerView.setAdapter(recyclerAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -61,13 +61,6 @@ public class CityActivity extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
-    }
-
-    public void finishActivityWithResult(String city) {
-        Intent intentResult = new Intent();
-        intentResult.putExtra(SELECTED_CITY, city);
-        setResult(RESULT_OK, intentResult);
-        finish();
     }
 
     public static void addCitiesInArrayList(List<String> arrayList) {
