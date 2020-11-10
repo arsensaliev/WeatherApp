@@ -6,68 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include
+        android:id="@+id/mainToolbar"
+        layout="@layout/toolbar" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#03A9F4"
-            android:minHeight="@dimen/welcome_height">
+    <TextView
+        android:id="@+id/selectedCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainToolbar" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/welcome_header"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Spinner
-                    android:id="@+id/spinnerLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:entries="@array/locations"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/welcome_body"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_header"
-                tools:layout_editor_absoluteX="0dp">
-
-                <TextView
-                    android:id="@+id/city_temperature"
-                    android:layout_width="56dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/city_temperature"
-                    android:textColor="@color/colorLight"
-                    android:textSize="@dimen/city_temperature_textSize"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/weather_icon"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/weather_icon"
-                    android:layout_width="56dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/city_temperature"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/icon_sun" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@+id/selectedCity"
+        app:layout_constraintStart_toStartOf="@+id/selectedCity"
+        app:layout_constraintTop_toBottomOf="@+id/selectedCity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

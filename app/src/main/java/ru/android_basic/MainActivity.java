@@ -1,16 +1,38 @@
 package ru.android_basic;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private final int REQUEST_CODE = 101;
+    private TextView selectedCity;
+
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.mainToolbar);
+        setSupportActionBar(toolbar);
+
+        selectedCity = findViewById(R.id.selectedCity);
+
+        if (selectedCity.getText().toString().isEmpty()) {
+            Intent intent = new Intent(this, CityActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        }
 
         String instanceState;
         if (savedInstanceState == null) {
@@ -22,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     protected void onStart() {
@@ -80,4 +101,31 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "onDestroy");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.mainSettings) {
+            Intent intent = new Intent(this, CityActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode != REQUEST_CODE) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
+        if (resultCode == RESULT_OK) {
+            selectedCity.setText(data.getStringExtra("selectedCity"));
+        }
+    }
 }
