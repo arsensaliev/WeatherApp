@@ -22,7 +22,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private static final String TAG = "RecyclerAdapter";
     private static final String SELECTED_CITY = "selectedCity";
-
+    private static final String SELECTED_CITY_POSITION = "selectedCityPosition";
     int count = 0;
     List<String> citiesList;
     List<String> citiesListAll;
@@ -103,6 +103,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public void onClick(View view) {
             Intent intentResult = new Intent();
             intentResult.putExtra(SELECTED_CITY, citiesList.get(getAdapterPosition()));
+            intentResult.putExtra(SELECTED_CITY_POSITION, String.valueOf(getAdapterPosition()));
             cityActivityContext.setResult(Activity.RESULT_OK, intentResult);
             cityActivityContext.finish();
         }

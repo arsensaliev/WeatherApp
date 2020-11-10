@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private final int REQUEST_CODE = 101;
     private TextView selectedCity;
+    private TextView cityTemperature;
 
     private Toolbar toolbar;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         selectedCity = findViewById(R.id.selectedCity);
+        cityTemperature = findViewById(R.id.cityTemperature);
 
         if (selectedCity.getText().toString().isEmpty()) {
             Intent intent = new Intent(this, CityActivity.class);
@@ -126,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             selectedCity.setText(data.getStringExtra("selectedCity"));
+            cityTemperature.setText(String.format("+%s", data.getStringExtra("selectedCityPosition")));
         }
     }
 }
