@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="locations">
+        <item>Тюмень</item>
+        <item>Волгоград</item>
+        <item>Воронеж</item>
+        <item>Саратов</item>
+        <item>Тольятти</item>
+        <item>Ижевск</item>
+        <item>Иркутск</item>
+        <item>Оренбург</item>
+        <item>Сочи</item>
+        <item>Санкт-Петербург</item>
+        <item>Краснодар</item>
+        <item>Уфа</item>
+        <item>Новосибирск</item>
         <item>Москва</item>
-        <item>Лондон</item>
-        <item>Париж</item>
-        <item>Алматы</item>
+        <item>Красноярск</item>
+        <item>Кемерово</item>
+        <item>Екатеринбург</item>
+        <item>Нижний Новгород</item>
+        <item>Самара</item>
+        <item>Челябинск</item>
+        <item>Омск</item>
+        <item>Ростов-на-Дону</item>
+        <item>Уфа</item>
+        <item>Пермь</item>
+        <item>Грозный</item>
+        <item>Казань</item>
     </string-array>
 </resources>
