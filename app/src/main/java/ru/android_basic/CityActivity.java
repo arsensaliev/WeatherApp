@@ -6,12 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CityActivity extends AppCompatActivity {
@@ -31,8 +31,9 @@ public class CityActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.cityToolbar);
         setSupportActionBar(toolbar);
 
+        String[] locations = getResources().getStringArray(R.array.locations);
         citiesList = new ArrayList<>();
-        addCitiesInArrayList(citiesList);
+        citiesList.addAll(Arrays.asList(locations));
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerAdapter = new RecyclerAdapter(citiesList, CityActivity.this);
@@ -61,34 +62,5 @@ public class CityActivity extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
-    }
-
-    public static void addCitiesInArrayList(List<String> arrayList) {
-        arrayList.add("Тюмень");
-        arrayList.add("Грозный");
-        arrayList.add("Казань");
-        arrayList.add("Санкт-Петербург");
-        arrayList.add("Краснодар");
-        arrayList.add("Уфа");
-        arrayList.add("Новосибирск");
-        arrayList.add("Москва");
-        arrayList.add("Красноярск");
-        arrayList.add("Кемерово");
-        arrayList.add("Екатеринбург");
-        arrayList.add("Нижний Новгород");
-        arrayList.add("Самара");
-        arrayList.add("Челябинск");
-        arrayList.add("Омск");
-        arrayList.add("Ростов-на-Дону");
-        arrayList.add("Уфа");
-        arrayList.add("Пермь");
-        arrayList.add("Волгоград");
-        arrayList.add("Воронеж");
-        arrayList.add("Саратов");
-        arrayList.add("Тольятти");
-        arrayList.add("Ижевск");
-        arrayList.add("Иркутск");
-        arrayList.add("Оренбург");
-        arrayList.add("Сочи");
     }
 }

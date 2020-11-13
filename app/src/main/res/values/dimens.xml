@@ -5,4 +5,5 @@
     <dimen name="city_name_padding">10dp</dimen>
     <dimen name="city_temperature_textSize">32sp</dimen>
     <dimen name="welcome_height">256dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
