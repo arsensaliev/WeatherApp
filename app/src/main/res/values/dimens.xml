@@ -6,4 +6,5 @@
     <dimen name="city_temperature_textSize">32sp</dimen>
     <dimen name="welcome_height">256dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="rowItem">24sp</dimen>
 </resources>
