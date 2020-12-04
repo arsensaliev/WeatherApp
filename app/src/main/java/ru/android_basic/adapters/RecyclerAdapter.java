@@ -1,4 +1,4 @@
-package ru.android_basic;
+package ru.android_basic.adapters;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import ru.android_basic.R;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     private static final String TAG = "RecyclerAdapter";

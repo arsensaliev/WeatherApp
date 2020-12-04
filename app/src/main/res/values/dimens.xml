@@ -7,4 +7,5 @@
     <dimen name="welcome_height">256dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="rowItem">24sp</dimen>
+    <integer name="duration_anim">150</integer>
 </resources>
