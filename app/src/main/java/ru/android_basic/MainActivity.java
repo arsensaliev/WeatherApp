@@ -22,7 +22,7 @@ import java.util.Stack;
 
 import ru.android_basic.fragments.AboutFragment;
 import ru.android_basic.fragments.HomeFragment;
-import ru.android_basic.fragments.LocationFragment;
+import ru.android_basic.fragments.location.LocationFragment;
 import ru.android_basic.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
             mainParcel = savedInstanceState.getParcelable(Constants.CURRENT_PARCEL);
             setCurrentTab(mainParcel.getCurrentTab());
         } else {
-            mainParcel = new MainParcel(false, TAB_MAIN);
+            mainParcel = new MainParcel(TAB_MAIN);
         }
 
-        if (sharedPreferences.getBoolean(Constants.SHARED_THEME_IS_DARK, false) &&
+      /*  if (sharedPreferences.getBoolean(Constants.SHARED_THEME_IS_DARK, false) &&
                 AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES) {
             setDarkTheme(true);
             return;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
             setDarkTheme(false);
             return;
-        }
+        }*/
 
         init();
     }
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         currentTab = tab;
     }
 
-    public boolean isDarkTheme() {
+ /*   public boolean isDarkTheme() {
         return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
     }
 
@@ -236,5 +236,5 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
         //recreate();
     }
-
+*/
 }

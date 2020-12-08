@@ -17,7 +17,8 @@ import androidx.fragment.app.Fragment;
 import ru.android_basic.Constants;
 import ru.android_basic.MainActivity;
 import ru.android_basic.R;
-import ru.android_basic.adapters.RecyclerAdapter;
+import ru.android_basic.fragments.location.RecyclerAdapter;
+import ru.android_basic.fragments.location.LocationFragment;
 import ru.android_basic.model.RequestApi;
 import ru.android_basic.model.weather.WeatherRequest;
 

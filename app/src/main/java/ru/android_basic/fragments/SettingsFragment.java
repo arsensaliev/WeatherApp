@@ -33,17 +33,17 @@ public class SettingsFragment extends Fragment {
         RadioButton radioButtonDark = view.findViewById(R.id.radioButtonDark);
         RadioButton radioButtonLight = view.findViewById(R.id.radioButtonLight);
 
-        radioButtonDark.setChecked(mainActivity.isDarkTheme());
+//        radioButtonDark.setChecked(mainActivity.isDarkTheme());
 
         radioGroupTheme.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.radioButtonDark:
-                        mainActivity.setDarkTheme(true);
+//                        mainActivity.setDarkTheme(true);
                         break;
                     case R.id.radioButtonLight:
-                        mainActivity.setDarkTheme(false);
+//                        mainActivity.setDarkTheme(false);
                         break;
                 }
             }

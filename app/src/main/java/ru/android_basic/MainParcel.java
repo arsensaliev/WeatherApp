@@ -5,16 +5,16 @@ import android.os.Parcelable;
 
 public class MainParcel implements Parcelable {
 
-    private boolean isDark;
+//    private boolean isDark;
     private String currentTab;
 
     protected MainParcel(Parcel in) {
-        isDark = in.readByte() != 0;
+//        isDark = in.readByte() != 0;
         currentTab = in.readString();
     }
 
-    public MainParcel(boolean isDark, String currentTab) {
-        this.isDark = isDark;
+    public MainParcel(String currentTab) {
+//        this.isDark = isDark;
         this.currentTab = currentTab;
     }
 
@@ -37,13 +37,13 @@ public class MainParcel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeByte((byte) (isDark ? 1 : 0));
+//        parcel.writeByte((byte) (isDark ? 1 : 0));
         parcel.writeString(currentTab);
     }
 
-    public boolean isDark() {
-        return isDark;
-    }
+//    public boolean isDark() {
+//        return isDark;
+//    }
 
     public String getCurrentTab() {
         return currentTab;
