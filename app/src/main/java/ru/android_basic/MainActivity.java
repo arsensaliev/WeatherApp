@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     // Fragments
     private FragmentManager fragmentManager;
     private LocationFragment locationFragment;
+    private HomeFragment homeFragment;
 
     // Tab
     private String currentTab = TAB_MAIN;
