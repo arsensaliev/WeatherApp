@@ -19,11 +19,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import android.util.Log;
 
 import ru.android_basic.fragments.AboutFragment;
 import ru.android_basic.fragments.HomeFragment;
 import ru.android_basic.fragments.LocationFragment;
 import ru.android_basic.fragments.SettingsFragment;
+import ru.android_basic.model.RequestApi;
 
 public class MainActivity extends AppCompatActivity {
 
