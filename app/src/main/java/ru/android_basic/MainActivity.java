@@ -19,30 +19,25 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
-import android.util.Log;
 
 import ru.android_basic.fragments.AboutFragment;
 import ru.android_basic.fragments.HomeFragment;
 import ru.android_basic.fragments.LocationFragment;
 import ru.android_basic.fragments.SettingsFragment;
-import ru.android_basic.model.RequestApi;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAB_MAIN = "tab_home";
+    private static final String TAB_ABOUT = "tab_about";
+    private static final String TAB_SETTINGS = "tab_settings";
     // Time
     private long mLastClickTime;
-
     // Fragments
     private FragmentManager fragmentManager;
     private LocationFragment locationFragment;
     private HomeFragment homeFragment;
-
     // Tab
     private String currentTab = TAB_MAIN;
-    private static final String TAB_MAIN = "tab_home";
-    private static final String TAB_ABOUT = "tab_about";
-    private static final String TAB_SETTINGS = "tab_settings";
-
     // Navigation
     private BottomNavigationView navView;
 
@@ -53,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     // Parcel
     private MainParcel mainParcel;
 
+    public int getCurrentCityId() {
+        return currentCityId;
+    }
+
+    private int currentCityId;
     private Map<String, Stack<Fragment>> mStacks;
 
     @SuppressLint("CommitPrefEdits")
@@ -80,9 +80,11 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.getBoolean(Constants.SHARED_THEME_IS_DARK, false) &&
                 AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES) {
             setDarkTheme(true);
+            return;
         } else if (!sharedPreferences.getBoolean(Constants.SHARED_THEME_IS_DARK, false) &&
                 AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
             setDarkTheme(false);
+            return;
         }
 
         init();
@@ -97,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+
+        currentCityId = sharedPreferences.getInt(Constants.SHARED_COUNTRY_ID, Constants.DEFAULT_CITY_ID);
+
         if (mStacks == null) {
             mStacks = new HashMap<String, Stack<Fragment>>();
             mStacks.put(TAB_MAIN, new Stack<Fragment>());
@@ -171,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             switch (getCurrentTab()) {
                 case TAB_MAIN:
                     fragment = new HomeFragment();
+                    homeFragment = (HomeFragment) fragment;
                     break;
                 case TAB_ABOUT:
                     fragment = new AboutFragment();
@@ -183,6 +189,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             pushFragments(mStacks.get(getCurrentTab()).lastElement(), false, null);
         }
+    }
+
+    public void changeCountry(int id, String country) {
+        homeFragment.getCurrentParcel().setCityName(country);
+        homeFragment.getCurrentParcel().setCityId(id);
+        currentCityId = id;
     }
 
     public void pushFragments(Fragment fragment, boolean addToBS, Bundle bundle) {
@@ -208,6 +220,10 @@ public class MainActivity extends AppCompatActivity {
         currentTab = tab;
     }
 
+    public boolean isDarkTheme() {
+        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+    }
+
     public void setDarkTheme(boolean isDark) {
         if (isDark) {
             AppCompatDelegate.setDefaultNightMode(
@@ -219,10 +235,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean(Constants.SHARED_THEME_IS_DARK, isDark);
         editor.commit();
         //recreate();
-    }
-
-    public boolean isDarkTheme() {
-        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
     }
 
 }

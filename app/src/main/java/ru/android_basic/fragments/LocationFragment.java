@@ -86,7 +86,7 @@ public class LocationFragment extends Fragment {
             currentParcel = (Parcel) savedInstanceState.getParcelable(Constants.CURRENT_PARCEL);
         } else {
             String location = sharedPreferences.getString(Constants.SHARED_COUNTRY_NAME, getResources().getStringArray(R.array.locations)[0]);
-            currentParcel = new Parcel(location);
+//            currentParcel = new Parcel(location, );
         }
 
         init(view);

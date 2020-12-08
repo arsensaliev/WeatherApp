@@ -8,7 +8,7 @@ public class Constants {
     public static final String API_CITY_ID_NAME = "id";
 
     //!!!!!!
-    public static final String API_KEY = "Your api key";
+    public static final String API_KEY = "f20ec8a6b09b4c33f2b4cd121a0feee5";
     //!!!!!!
 
     public static final String API_LANGUAGE_NAME = "lang";
@@ -16,7 +16,7 @@ public class Constants {
     public static final String API_UNITS_NAME = "units";
     public static final String API_UNITS_METRIC = "metric";
     public static final String URL_CONNECTION = "https://api.openweathermap.org/data/2.5/weather";
-    public static final int DEFAULT_CITY_ID = 524901;
+    public static final int DEFAULT_CITY_ID = 1516905;
 
     public static final String EMPTY_STRING = "";
 
